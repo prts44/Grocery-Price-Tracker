@@ -1,0 +1,1 @@
+// fallback data in case the server is down or there is no server

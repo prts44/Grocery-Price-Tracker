@@ -1,0 +1,22 @@
+.container {
+    height: 175px;
+    width: 400px;
+    border: 1px black solid;
+    display: flex;
+}
+
+.previewImage {
+    height: 100px;
+    width: 100px;
+    align-content: center;
+}
+
+.headingLarge {
+    font-size: 20px;
+    line-height: 80%;
+}
+
+.headingMedium {
+    font-size: 14px;
+    line-height: 80%;
+}

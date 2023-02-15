@@ -1,22 +1,44 @@
 .container {
-    height: 175px;
+    height: 200px;
     width: 400px;
     border: 1px black solid;
     display: flex;
+    margin: 60px 60px 60px 60px;
+    align-content: center;
+    align-items: center;
+    transition: transform 0.5s;
+}
+
+.container:hover {
+    transform: scale(1.1);
+}
+
+.textInfo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+    vertical-align: middle;
+    border: 3px blue solid;
+    justify-content: center;
 }
 
 .previewImage {
-    height: 100px;
-    width: 100px;
+    height: 30%;
+    width: 30%;
     align-content: center;
 }
 
 .headingLarge {
     font-size: 20px;
-    line-height: 80%;
+    line-height: 60%;
 }
 
 .headingMedium {
     font-size: 14px;
-    line-height: 80%;
+    line-height: 60%;
+}
+
+.textBasic {
+    line-height: 60%;
 }

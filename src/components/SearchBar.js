@@ -1,8 +1,10 @@
+import "../style/SearchBar.css";
+
 function SearchBar(props) {
 
     return (
         <div>
-            <input type="text"></input>
+            <input className="searchBar" type="text"></input>
         </div>
     );
 

@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.visuals {
+    border: 4px blue solid;
+}
+
+.textInfo {
+    border: 4px green solid;
+}

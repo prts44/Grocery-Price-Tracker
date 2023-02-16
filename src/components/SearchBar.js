@@ -1,10 +1,10 @@
-import "../style/SearchBar.css";
+import style from "../style/SearchBar.module.css";
 
 function SearchBar(props) {
 
     return (
         <div>
-            <input className="searchBar" type="text"></input>
+            <input className={style.searchBar} type="text"></input>
         </div>
     );
 

@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import SearchBar from './components/SearchBar.js';
 import Card from './components/Card.js';
+import Details from './pages/Details.js';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
             <Card />
             <Card />
         </div>
+        <Details />
     </div>
   );
 }

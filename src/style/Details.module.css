@@ -1,12 +1,32 @@
+.chart {
+    border: 1px red solid;
+    height: 50%;
+}
+
 .container {
     display: flex;
+    height: 100%;
     width: 100%;
+}
+
+.imageWrapper {
+    border: 1px red solid;
+    height: 50%;
+}
+
+.previewImage {
+    height: 200px;
+    width: 200px;
+    align-content: center;
 }
 
 .visuals {
     border: 4px blue solid;
+    flex-direction: column;
+    width: 50%;
 }
 
 .textInfo {
     border: 4px green solid;
+    width: 50%;
 }

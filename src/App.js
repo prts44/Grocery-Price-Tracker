@@ -3,6 +3,7 @@ import './App.css';
 import SearchBar from './components/SearchBar.js';
 import Card from './components/Card.js';
 import Details from './pages/Details.js';
+import Graph from './components/Graph.js';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Card />
         </div>
         <Details />
+        <Graph />
     </div>
   );
 }

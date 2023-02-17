@@ -1,27 +1,56 @@
 import {Chart} from 'chart.js/auto';
 import {Line} from 'react-chartjs-2';
+import style from '../style/Graph.module.css';
 import 'chartjs-adapter-luxon';
 
 function Graph(props) {
-    // part of this code came from a tutorial/example
-    // will be updated later
     const data = {
-        // datasets is an array of objects where each object represents a set of data to display corresponding to the labels above. for brevity, we'll keep it at one object
         datasets: [
             {
-              label: 'Walmart',
-              data: [{
-                x: '2010-12-25',
-                y: 3.99
-              },
-              {
-                x: '2011-12-25',
-                y: 4.99
-              }],
-              // you can set indiviual colors for each bar
-              backgroundColor: 'rgba(1, 15, 255, 0.6)',
-              borderColor: 'rgba(1, 15, 255, 0.6)',
-              borderWidth: 1
+                label: 'Walmart',
+                data: [{
+                    x: '2010-12-25',
+                    y: 3.99
+                },
+                {
+                    x: '2011-01-02',
+                    y: 4.99
+                },
+                {
+                    x: '2011-01-16',
+                    y: 5.99
+                },
+                {
+                    x: '2012-11-29',
+                    y: 6.99
+                },
+                ],
+                backgroundColor: 'rgba(1, 15, 255, 0.6)',
+                borderColor: 'rgba(1, 15, 255, 0.6)',
+                borderWidth: 3,
+                pointRadius: 7,
+                pointHoverRadius: 10
+            },
+            {
+                label: 'Loblaws',
+                data: [{
+                    x: '2010-09-25',
+                    y: 2.99
+                },
+                {
+                    x: '2011-04-22',
+                    y: 5.99
+                },
+                {
+                    x: '2012-06-19',
+                    y: 8.99
+                }
+                ],
+                backgroundColor: 'rgba(180, 180, 5, 0.6)',
+                borderColor: 'rgba(180, 180, 5, 0.6)',
+                borderWidth: 3,
+                pointRadius: 7,
+                pointHoverRadius: 10
             }
         ]
     }
@@ -29,23 +58,25 @@ function Graph(props) {
     const options = {
         responsive: true,
         plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart',
-          },
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: `Price history for ${"thing"}`,
+            },
         },
         scales: {
             x: {
-                type: 'timeseries',
+                type: 'time',
             }
-        }
-      };
+        },
+    };
 
     return (
-        <Line options={options} data={data}/>
+        <div className={style.graph}>
+            <Line options={options} data={data}/>
+        </div>
     );
 }
 

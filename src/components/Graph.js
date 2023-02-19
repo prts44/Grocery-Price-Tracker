@@ -25,8 +25,8 @@ function Graph(props) {
                     y: 6.99
                 },
                 ],
-                backgroundColor: 'rgba(1, 15, 255, 0.6)',
-                borderColor: 'rgba(1, 15, 255, 0.6)',
+                backgroundColor: 'rgb(1, 15, 255)',
+                borderColor: 'rgb(1, 15, 255)',
                 borderWidth: 3,
                 pointRadius: 7,
                 pointHoverRadius: 10
@@ -46,8 +46,8 @@ function Graph(props) {
                     y: 8.99
                 }
                 ],
-                backgroundColor: 'rgba(180, 180, 5, 0.6)',
-                borderColor: 'rgba(180, 180, 5, 0.6)',
+                backgroundColor: 'rgb(180, 180, 5)',
+                borderColor: 'rgb(180, 180, 5)',
                 borderWidth: 3,
                 pointRadius: 7,
                 pointHoverRadius: 10

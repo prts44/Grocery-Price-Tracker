@@ -1,0 +1,8 @@
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    /*border: 4px green solid;
+    box-sizing: border-box;*/
+    justify-content: center;
+}

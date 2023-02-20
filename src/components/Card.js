@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import style from '../style/Card.module.css';
 import logo from '../logo.svg';
 import exampleData from '../exampleData.js';
@@ -9,11 +9,27 @@ function Card(props) {
     const [itemName, setItemName] = useState("Name");
     const [latestPrice, setLatestPrice] = useState(3);
     const [lastUpdate, setLastUpdate] = useState("2023-02-01");
+    const prices = useRef([]);
 
     function getData() {
         if (props.useExampleData) {
             setItemName(data.items.find((item) => item.id === props.id).name);
-            console.log(new Date("2023-03-01") > new Date("2023-02-01"));
+            console.log(data);
+            prices.current = data.prices.filter((price) => price.id === props.id);
+            if (prices.current.length > 0){
+                let latest = prices.current[0];
+                for (let i = 1 ; i < prices.current.length ; i++) {
+                    if (new Date(latest.date) < new Date(prices.current[i].date)) {
+                        latest = prices.current[i];
+                    }
+                }
+                setLatestPrice(latest.price);
+                setLastUpdate(latest.date);
+            } else {
+                console.log(`Error: No prices found for ${itemName}`);
+                setLatestPrice("N/A");
+                setLastUpdate("N/A");
+            }
         } else {
             fetch(`api route/${props.id}`)
             .then(response => response.json())

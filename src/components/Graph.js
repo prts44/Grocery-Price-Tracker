@@ -1,59 +1,55 @@
 import {Chart} from 'chart.js/auto';
 import {Line} from 'react-chartjs-2';
 import style from '../style/Graph.module.css';
+import {useEffect, useState} from 'react';
 import 'chartjs-adapter-luxon';
 
 function Graph(props) {
-    const data = {
+
+    const DEFAULT_LINE_SIZE = 3; // called borderWidth in chartjs
+    const DEFAULT_POINT_RADIUS = 7;
+    const DEFAULT_POINT_RADIUS_HOVER = 10;
+
+    const [data, setData] = useState({
         datasets: [
             {
-                label: 'Walmart',
-                data: [{
-                    x: '2010-12-25',
-                    y: 3.99
-                },
-                {
-                    x: '2011-01-02',
-                    y: 4.99
-                },
-                {
-                    x: '2011-01-16',
-                    y: 5.99
-                },
-                {
-                    x: '2012-11-29',
-                    y: 6.99
-                },
-                ],
-                backgroundColor: 'rgb(1, 15, 255)',
-                borderColor: 'rgb(1, 15, 255)',
-                borderWidth: 3,
-                pointRadius: 7,
-                pointHoverRadius: 10
-            },
-            {
-                label: 'Loblaws',
-                data: [{
-                    x: '2010-09-25',
-                    y: 2.99
-                },
-                {
-                    x: '2011-04-22',
-                    y: 5.99
-                },
-                {
-                    x: '2012-06-19',
-                    y: 8.99
-                }
-                ],
-                backgroundColor: 'rgb(180, 180, 5)',
-                borderColor: 'rgb(180, 180, 5)',
-                borderWidth: 3,
-                pointRadius: 7,
-                pointHoverRadius: 10
+                label: 'default',
+                data: [],
+                backgroundColor: 'rgb(180, 2, 5)',
+                borderColor: 'rgb(180, 2, 5)',
+                borderWidth: DEFAULT_LINE_SIZE,
+                pointRadius: DEFAULT_POINT_RADIUS,
+                pointHoverRadius: DEFAULT_POINT_RADIUS_HOVER
             }
         ]
-    }
+    });
+
+    useEffect(() => {
+        let newData = {
+            datasets: props.stores.map((store) => {
+                return {
+                    label: store.name,
+                    data: props.prices.filter((price) => price.store == store.name)
+                        .map((price) => {
+                            return {
+                                x: price.date,
+                                y: price.price
+                            }
+                    }),
+                    backgroundColor: store.colour,
+                    borderColor: store.colour,
+                    borderWidth: DEFAULT_LINE_SIZE,
+                    pointRadius: DEFAULT_POINT_RADIUS,
+                    pointHoverRadius: DEFAULT_POINT_RADIUS_HOVER
+                }
+            })
+        };
+        setData(newData);
+    }, []);
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     const options = {
         responsive: true,

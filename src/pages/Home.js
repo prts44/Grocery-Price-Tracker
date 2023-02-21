@@ -24,6 +24,7 @@ function Home(props) {
         });
     }
 
+    // creates clickable cards with basic info for each item
     function generateCards(items) {
         setCards(items.map((item) => {
             if (item.name.toLowerCase().includes(query)) {
@@ -47,11 +48,8 @@ function Home(props) {
         <div className="App">
             <SearchBar callback={setQuery}/>
             <div className={style.cardContainer}>
-                <Card />
                 {cards}
             </div>
-            <Details />
-            <Graph />
         </div>
     );
 }

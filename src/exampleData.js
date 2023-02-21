@@ -31,7 +31,7 @@ const stores = [
         name: "No Frills",
         colour: 'rgb(180, 180, 5)'
     }
-]
+];
 
 const prices = [
     {
@@ -64,6 +64,6 @@ const exampleData = {
     items: items,
     stores: stores,
     prices: prices
-}
+};
 
 export default exampleData;

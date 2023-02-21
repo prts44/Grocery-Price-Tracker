@@ -1,4 +1,5 @@
 import {useState, useEffect, useRef} from 'react';
+import { useNavigate } from 'react-router-dom';
 import style from '../style/Card.module.css';
 import logo from '../logo.svg';
 import exampleData from '../exampleData.js';
@@ -9,11 +10,14 @@ function Card(props) {
     const [itemName, setItemName] = useState("Name");
     const [latestPrice, setLatestPrice] = useState(3);
     const [lastUpdate, setLastUpdate] = useState("2023-02-01");
+    const [quantity, setQuantity] = useState("item");
     const prices = useRef([]);
 
     function getData() {
         if (props.useExampleData) {
-            setItemName(data.items.find((item) => item.id === props.id).name);
+            const item = data.items.find((item) => item.id === props.id)
+            setItemName(item.name);
+            setQuantity(item.pricePer);
             console.log(data);
             prices.current = data.prices.filter((price) => price.id === props.id);
             if (prices.current.length > 0){
@@ -44,12 +48,17 @@ function Card(props) {
         getData();
     }, []);
 
+    const navigate = useNavigate();
+    function goToDetails() {
+        navigate(`/items/${props.id}`);
+    }
+
     return (
-        <div className={style.container} onClick={() => console.log("hey :)")}>
+        <div className={style.container} onClick={() => goToDetails()}>
             <img src={logo} className={style.previewImage} alt={itemName}/>
             <div className={style.textInfo}>
                 <h1 className={style.headingLarge}>{itemName}</h1>
-                <h2 className={style.headingMedium}>Latest Price:</h2>
+                <h2 className={style.headingMedium}>Latest Price (per {quantity}):</h2>
                 <p className={style.textBasic}>${latestPrice}</p>
                 <h2 className={style.headingMedium}>Last Update (yyyy-mm-dd):</h2>
                 <p className={style.textBasic}>{lastUpdate}</p>

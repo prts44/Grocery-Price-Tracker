@@ -1,15 +1,23 @@
+.basicInfo {
+    display: flex;
+    flex-direction: row;
+}
+
 .chart {
     border: 1px red solid;
-    height: 50%;
+    height: 60%;
+    width: 80%;
 }
 
 .container {
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
+    align-items: center;
 }
 
-.imageWrapper {
+.imageContainer {
     border: 1px red solid;
     height: 50%;
 }
@@ -18,12 +26,6 @@
     height: 200px;
     width: 200px;
     align-content: center;
-}
-
-.visuals {
-    border: 4px blue solid;
-    flex-direction: column;
-    width: 50%;
 }
 
 .textInfo {

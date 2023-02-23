@@ -6,3 +6,18 @@
     box-sizing: border-box;*/
     justify-content: center;
 }
+
+.container {
+    background-color: rgb(245, 245, 245);
+    text-align: center;
+}
+
+.titleBox {
+    background: radial-gradient(circle, rgba(41,0,110,1) 37%, rgba(70,0,122,1) 67%, rgba(89,23,164,1) 100%);
+    color: white;
+    padding: 15px 0px 15px 0px;
+}
+
+.title {
+    font-size: 50px;
+}

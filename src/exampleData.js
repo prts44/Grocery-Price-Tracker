@@ -19,6 +19,11 @@ const items = [
         id: 4,
         name: "Milk",
         pricePer: "L"
+    },
+    {
+        id: 5,
+        name: "Orange Juice",
+        pricePer: "L"
     }
 ];
 

@@ -69,11 +69,10 @@ function Details(props) {
                 </div>  
             </div>
             <div className={style.chart}>
-                {prices.length > 0 ? <Graph stores={stores} prices={prices} id={params.id}/> : ""}
+                {prices.length > 0 ? <Graph stores={stores} prices={prices} id={params.id}/> : <h1>No prices found!</h1>}
             </div>
         </div>
     );
-
 }
 
 export default Details;

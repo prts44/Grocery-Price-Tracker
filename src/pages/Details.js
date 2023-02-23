@@ -56,21 +56,24 @@ function Details(props) {
 
     return (
         <div className={style.container}>
+            <div className={style.itemName}>
+                <h1>{itemName}</h1>
+            </div>
             <div className={style.basicInfo}>
                 <div className={style.imageContainer}>
                     <img src={logo} alt={"alt"} className={style.previewImage}/>
                 </div>
                 <div className={style.textInfo}>
-                    <h1>{itemName}</h1>
                     <h2>Latest Price (at selected store)</h2>
                     <p>${priceView}</p>
-                    <h2>Last Updated</h2>
+                    <h2>Last Updated (yyyy-mm-dd)</h2>
                     <p>{lastUpdateView}</p>
                 </div>  
             </div>
             <div className={style.chart}>
                 {prices.length > 0 ? <Graph stores={stores} prices={prices} id={params.id}/> : <h1>No prices found!</h1>}
             </div>
+            <a className={style.back} href="/">Back</a>
         </div>
     );
 }

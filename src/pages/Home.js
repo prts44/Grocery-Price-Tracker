@@ -48,7 +48,7 @@ function Home(props) {
         <div className={style.container}>
             <div className={style.titleBox}>
                 <h1 className={style.title}>Grocery Price Tracker</h1>
-                <p>Click on any card to see more information.</p>
+                <p>Click on a card to see more information.</p>
             </div>
             <SearchBar callback={setQuery}/>
             <div className={style.cardContainer}>

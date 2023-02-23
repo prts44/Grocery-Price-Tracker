@@ -60,7 +60,7 @@ function Card(props) {
                 <h1 className={style.headingLarge}>{itemName}</h1>
                 <h2 className={style.headingMedium}>Latest Price (per {quantity}):</h2>
                 <p className={style.textBasic}>${latestPrice}</p>
-                <h2 className={style.headingMedium}>Last Update (yyyy-mm-dd):</h2>
+                <h2 className={style.headingMedium}>Last Updated (yyyy-mm-dd):</h2>
                 <p className={style.textBasic}>{lastUpdate}</p>
             </div>
         </div>

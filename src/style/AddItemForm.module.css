@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 300px;
+    height: 200px;
+    animation: 0.4s fadeup;
+    background-color: white;
+}
+
+@keyframes fadeup {
+    0% {
+        opacity: 0;
+        margin-top: 200px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0;
+    }
+}

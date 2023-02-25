@@ -2,28 +2,28 @@
 const items = [
     {
         id: 1,
-        name: "Apples",
-        pricePer: "lb"
+        item_name: "Apples",
+        quantity: "lb"
     },
     {
         id: 2,
-        name: "Cereal",
-        pricePer: "box"
+        item_name: "Cereal",
+        quantity: "box"
     },
     {
         id: 3,
-        name: "Eggs (12)",
-        pricePer: "carton"
+        item_name: "Eggs (12)",
+        quantity: "carton"
     },
     {
         id: 4,
-        name: "Milk",
-        pricePer: "L"
+        item_name: "Milk",
+        quantity: "L"
     },
     {
         id: 5,
-        name: "Orange Juice",
-        pricePer: "L"
+        item_name: "Orange Juice",
+        quantity: "L"
     }
 ];
 
@@ -42,25 +42,25 @@ const prices = [
     {
         id: 1,
         price: "3.99",
-        date: "2023-01-02",
+        update_date: new Date("2023-01-02"),
         store: "Walmart"
     },
     {
         id: 1,
         price: "2.99",
-        date: "2022-12-15",
+        update_date: new Date("2022-12-15"),
         store: "Walmart"
     },
     {
         id: 2,
         price: "4.99",
-        date: "2022-12-15",
+        update_date: new Date("2022-12-15"),
         store: "Walmart"
     },
     {
         id: 2,
         price: "5.99",
-        date: "2022-12-16",
+        update_date: new Date("2022-12-16"),
         store: "Walmart"
     }
 ];

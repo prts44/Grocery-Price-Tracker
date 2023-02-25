@@ -1,48 +1,50 @@
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef, useMemo} from 'react';
 import SearchBar from '../components/SearchBar.js';
 import Card from '../components/Card.js';
-import Details from '../pages/Details.js';
-import Graph from '../components/Graph.js';
 import exampleData from '../exampleData.js';
 import style from '../style/Home.module.css';
 
 function Home(props) {
-    let useExampleData = useRef(false);
-    let [cards, setCards] = useState([]);
-    const [data, setData] = useState(exampleData);
+    const [useExampleData, setUseExampleData] = useState(false);
+    const [data, setData] = useState(exampleData.items);
     const [query, setQuery] = useState("");
+    const cards = useMemo(() => {
+        console.log("Use memo ran");
+        return generateCards(data);
+    }, [data, query]);
 
     function getData() {
-        fetch("api route")
+        fetch("http://localhost:4000/items")
         .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(() => {
+        .then(newData => {
+            setData(newData);
+            console.log("setData ran");
+        })
+        .catch((err) => {
+            console.log(err);
             console.log("Could not fetch data. Using example data instead.");
-            useExampleData.current = true;
-            console.log(data.items);
-            generateCards(data.items);
+            setUseExampleData(true);
         });
-    }
-
-    // creates clickable cards with basic info for each item
-    function generateCards(items) {
-        setCards(items.map((item) => {
-            if (item.name.toLowerCase().includes(query)) {
-                return <Card id={item.id} useExampleData={useExampleData} />;
-            } else {
-                return <></>;
-            }
-        }));
-        console.log(cards);
     }
 
     useEffect(() => {
         getData();
     }, []);
 
-    useEffect(() => {
-        generateCards(data.items);
-    }, [query]);
+    // creates clickable cards with basic info for each item
+    function generateCards(items) {
+        return items.map((item) => {
+            if (item.item_name.toLowerCase().includes(query)) {
+                //console.log(useExampleData);
+                return <Card 
+                        key={item.id} 
+                        id={item.id} 
+                        useExampleData={useExampleData} />;
+            } else {
+                return <></>;
+            }
+        });
+    }
 
     return (
         <div className={style.container}>
@@ -50,6 +52,7 @@ function Home(props) {
                 <h1 className={style.title}>Grocery Price Tracker</h1>
                 <p>Click on a card to see more information.</p>
             </div>
+            {useExampleData ? <p>You are viewing example data because the app could not connect to the server.</p> : <></>}
             <SearchBar callback={setQuery}/>
             <div className={style.cardContainer}>
                 {cards}

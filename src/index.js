@@ -5,7 +5,10 @@ import reportWebVitals from './reportWebVitals';
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import Home from './pages/Home.js';
 import Details from './pages/Details.js';
+import Manage from './pages/Manage.js';
 import Header from './components/Header.js';
+import AddItemForm from './components/AddItemForm.js';
+
 
 const router = createBrowserRouter([
     {
@@ -15,6 +18,10 @@ const router = createBrowserRouter([
     {
         path: "/items/:id",
         element: <Details />
+    },
+    {
+        path: "/manage",
+        element: <Manage />
     }
 ])
 

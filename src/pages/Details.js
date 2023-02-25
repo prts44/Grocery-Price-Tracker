@@ -1,9 +1,11 @@
 import {useState, useEffect, useRef} from 'react';
+import Popup from 'reactjs-popup';
 import { useParams } from "react-router-dom";
 import style from "../style/Details.module.css";
 import logo from '../logo.svg';
 import exampleData from '../exampleData.js';
 import Graph from '../components/Graph.js';
+import AddItemForm from '../components/AddItemForm.js';
 
 function Details(props) {
 
@@ -11,6 +13,7 @@ function Details(props) {
     const [prices, setPrices] = useState([]);
     const selectedStore = useRef("Walmart");
     const [data, setData] = useState(exampleData);
+    const [quantity, setQuantity] = useState("item")
     const [stores, setStores] = useState(exampleData.stores);
     const [itemName, setItemName] = useState("Name");
     const [priceView, setPriceView] = useState(4);
@@ -30,6 +33,7 @@ function Details(props) {
     function updateDisplay() {
         let item = data.items.find((item) => item.id == params.id);
         setItemName(item.name);
+        setQuantity(item.quantity)
         setPrices(data.prices.filter((price) => price.id == params.id));
     }
 
@@ -57,7 +61,7 @@ function Details(props) {
     return (
         <div className={style.container}>
             <div className={style.itemName}>
-                <h1>{itemName}</h1>
+                <h1>{itemName + " (per " + quantity + ")"}</h1>
             </div>
             <div className={style.basicInfo}>
                 <div className={style.imageContainer}>
@@ -69,6 +73,13 @@ function Details(props) {
                     <h2>Last Updated (yyyy-mm-dd)</h2>
                     <p>{lastUpdateView}</p>
                 </div>  
+            </div>
+            <div>
+                <Popup trigger={<button>Edit Item</button>} modal>
+                    <AddItemForm id={params.id} name={itemName} quantity={quantity}/>
+                </Popup>
+                <button>Add price</button>
+                <button>Delete item</button>
             </div>
             <div className={style.chart}>
                 {prices.length > 0 ? <Graph stores={stores} prices={prices} id={params.id}/> : <h1>No prices found!</h1>}
